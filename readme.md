@@ -1,4 +1,3 @@
-# Random edit
 # Pure Ruby HTML Generator
 
 ## What?
