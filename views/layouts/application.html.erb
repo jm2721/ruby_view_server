@@ -5,22 +5,19 @@
          end
   %>
   
-  <% if @request.query['sex'] %>
-    <p> YOUR SEX IS <%= @request.query['sex'] %></p>
-  <% else %>
-    <p> You haven't entered anything... </p>  
-  <% end %>
-
   <form method='post' action="<%= @request.path %>">
             First name: <input type="text" name="first_name" placeholder='first name'/><br />
+            <input type="radio" name="sex" value="male">Male<br>
+            <input type="radio" name="sex" value="female">Female<br>
             <input type="submit" value="Submit" />
   </form>
-
-  <form method='post' action="<%= @request.path %>">
-    <input type="radio" name="sex" value="male">Male<br>
-    <input type="radio" name="sex" value="female">Female
-  </form> 
-   
+  
+  <% if @request.query['sex'] == "male" && !@request.query['first_name'].empty? %>
+    <p> Welcome Mr.  <%= @request.query['first_name'] %></p>
+  <% elsif @request.query['sex'] == "female" %>
+    <p> Welcome Ms. <%= @request.query['first_name'] %> </p>  
+  <% end %>
+  
   <body>
     <h1>You're using a layout</h1>
     <p>
