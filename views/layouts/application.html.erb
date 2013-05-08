@@ -1,9 +1,33 @@
 <html>
+  <%
+        def link_to(name, url)
+            return "<a href='#{url}'>#{name}</a>"
+         end
+  %>
+  
+  <% if @request.query['sex'] %>
+    <p> YOUR SEX IS <%= @request.query['sex'] %></p>
+  <% else %>
+    <p> You haven't entered anything... </p>  
+  <% end %>
+
+  <form method='post' action="<%= @request.path %>">
+            First name: <input type="text" name="first_name" placeholder='first name'/><br />
+            <input type="submit" value="Submit" />
+  </form>
+
+  <form method='post' action="<%= @request.path %>">
+    <input type="radio" name="sex" value="male">Male<br>
+    <input type="radio" name="sex" value="female">Female
+  </form> 
+   
   <body>
     <h1>You're using a layout</h1>
     <p>
       <h3> I'm a header</h3>
       <p>Put things in the header</p>
+      <%= link_to('Links to google', 'http://www.google.com') %>
+      <%= link_to('links to reddit', 'http://www.reddit.com') %>
       <a href='me.html'>Me</a>
 
     </p>
